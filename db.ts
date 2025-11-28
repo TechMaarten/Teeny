@@ -1,4 +1,5 @@
 // connecting to database
+// developer : Victoria Mulugeta
 
 import { MongoClient, Db, Collection } from "mongodb";
 
@@ -8,7 +9,7 @@ if (!MONGO_URI) {
 }
 
 const DB_NAME = "budgetbuddy";
-export const LINKS_COLLECTION = "transactions";
+export const TRANSACTIONS_COLLECTION = "transactions";
 
 let client: MongoClient | null = null;
 let db: Db | null = null;

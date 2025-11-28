@@ -1,11 +1,8 @@
-
-// add comments (victoria)
+// add comments
+// developer : Victoria Mulugeta
 export type Transaction = {
     id: string,
-
-    // income or expense
-    type: string,
-
+    type: "income" | "expense";
     amount: number,
     category: string,
 
