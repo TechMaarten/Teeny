@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import getCollection, { TRANSACTIONS_COLLECTION } from "@/db";
 import type { Transaction } from "@/types/Transaction";
 
-// defines the API route handler for GET requests
+// API route handler for GET requests
 export async function GET() {
   try {
     // connecting to db
@@ -24,7 +24,7 @@ export async function GET() {
   }
 }
 
-// defines the API route handler for POST requests
+// API route handler for POST requests
 export async function POST(request: Request) {
   try {
     // read json
