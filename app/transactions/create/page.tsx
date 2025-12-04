@@ -1,6 +1,7 @@
-//app/createTransaction/page.tsx
+//developer Maarten Lopes
 import TransactionForm from "@/components/TransactionForm";
 
+//Display Transaction form
 export default function CreateTransactionPage() {
   return (
     <>

@@ -1,3 +1,6 @@
+// developer: Maarten Lopes
+
+//fix ssr error for styled-componenets
 {
   "presets": ["next/babel"],
   "plugins": [["styled-components", { "ssr": true }]]

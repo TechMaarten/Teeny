@@ -1,7 +1,9 @@
+//developer: Maarten Lopes
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css"; 
 
+//body styling and flex to keep the footer at the bottom
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" >
