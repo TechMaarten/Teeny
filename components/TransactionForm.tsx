@@ -1,11 +1,10 @@
-// developer: Maarten Lopes
-// TransactionForm component – allows users to create a new income or expense
+//developer: Maarten Lopes
+//TransactionForm component – allows users to create a new income or expense
 "use client";
 
 import { useState } from "react";
 import styled from "styled-components";
 
-// Styled components
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
@@ -77,23 +76,23 @@ const SuccessMsg = styled.p`
 `;
 
 export default function TransactionForm() {
-  // form state
+  //form state
   const [type, setType] = useState<"income" | "expense">("income");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
   const [note, setNote] = useState("");
 
-  // feedback state
+  //feedback state
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  // Handles the POST request when the form is submitted
+  //Handles the POST request when the form is submitted
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
     setSuccess(false);
 
-    // client-side validation
+    //client-side validation
     if (!amount || !category) {
       setError("Amount and Category are required.");
       return;
@@ -117,7 +116,7 @@ export default function TransactionForm() {
         throw new Error(data.error || "Failed to create transaction");
       }
 
-      // clear form on success
+      //clear form on success
       setAmount("");
       setCategory("");
       setNote("");

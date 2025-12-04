@@ -1,11 +1,11 @@
-// developer: Maarten Lopes
-// TransactionListView component – displays all transactions in read-only mode
+//developer: Maarten Lopes
+//TransactionListView component – displays all transactions in read-only mode
 "use client";
 
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-// Transaction data type
+//Transaction data type
 type Transaction = {
   _id: string;
   type: "income" | "expense";
@@ -15,7 +15,7 @@ type Transaction = {
   date: string;
 };
 
-// Styled components
+//Styled components
 const ListWrapper = styled.div`
   max-width: 800px;
   margin: 2rem auto;
@@ -70,12 +70,12 @@ export default function TransactionListView() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  // Load transactions on component mount
+  //Load transactions on component mount
   useEffect(() => {
     fetchTransactions();
   }, []);
 
-  // GET /api/transactions – fetch from backend
+  //GET /api/transactions – fetch from backend
   async function fetchTransactions() {
     try {
       setError(null);
