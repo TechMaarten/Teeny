@@ -7,7 +7,7 @@
 import { useEffect, useState } from "react";
 
 type Transaction = {
-  _id: string;              // assuming you serialize it as a string
+  _id: string; 
   type: "income" | "expense";
   amount: number;
   category: string;
@@ -78,9 +78,7 @@ export default function TransactionsView() {
       if (!res.ok) {
         throw new Error(data.error || "Failed to create transaction");
       }
-      // reload list
       await loadTransactions();
-      // clear form
       setAmount("");
       setCategory("");
       setNote("");
@@ -146,10 +144,9 @@ export default function TransactionsView() {
   }
 
   return (
-    <main style={{ maxWidth: 800, margin: "0 auto", padding: "1rem" }}>
+    <main style={{ maxWidth: 800, margin: "0 auto", padding: "5px" }}>
       <h1>Transactions</h1>
 
-      {/* GET / refresh */}
       <button onClick={loadTransactions} disabled={loading}>
         Refresh (GET)
       </button>
@@ -157,16 +154,10 @@ export default function TransactionsView() {
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
 
-      {/* List all documents */}
-      <ul style={{ listStyle: "none", padding: 0, marginTop: "1rem" }}>
+      <ul style={{ listStyle: "none", padding: 0, marginTop: "5px" }}>
         {transactions.map((t) => (
           <li
             key={t._id}
-            style={{
-              border: "1px solid #ccc",
-              marginBottom: "0.5rem",
-              padding: "0.5rem",
-            }}
           >
             <div><strong>ID:</strong> {t._id}</div>
             <div>
@@ -181,8 +172,7 @@ export default function TransactionsView() {
         ))}
       </ul>
 
-      {/* POST form */}
-      <section style={{ marginTop: "2rem" }}>
+      <section>
         <h2>Add Transaction (POST)</h2>
         <form onSubmit={handleCreate}>
           <label>
@@ -233,7 +223,7 @@ export default function TransactionsView() {
       </section>
 
       {/* PUT form */}
-      <section style={{ marginTop: "2rem" }}>
+      <section>
         <h2>Update Transaction (PUT)</h2>
         <form onSubmit={handleUpdate}>
           <label>
@@ -270,7 +260,7 @@ export default function TransactionsView() {
       </section>
 
       {/* DELETE form */}
-      <section style={{ marginTop: "2rem" }}>
+      <section>
         <h2>Delete Transaction (DELETE)</h2>
         <form onSubmit={handleDelete}>
           <label>
