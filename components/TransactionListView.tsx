@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 //Transaction data type
 type Transaction = {
-  _id: string;
+  id: string;
   type: "income" | "expense";
   amount: number;
   category: string;
@@ -99,7 +99,7 @@ export default function TransactionListView() {
         <p>No transactions found.</p>
       ) : (
         transactions.map((t) => (
-          <Card key={t._id} $type={t.type}>
+          <Card key={t.id} $type={t.type}>
             <Title>
               {t.type.toUpperCase()} – ${t.amount}
             </Title>
@@ -108,8 +108,8 @@ export default function TransactionListView() {
             <DateText>{new Date(t.date).toLocaleString()}</DateText>
 
             {/* Nate: add buttons below this line */}
-            {/* <Button onClick={() => onEdit(t._id)}>Edit</Button> */}
-            {/* <Button onClick={() => onDelete(t._id)}>Delete</Button> */}
+            {/* <Button onClick={() => onEdit(t.id)}>Edit</Button> */}
+            {/* <Button onClick={() => onDelete(t.id)}>Delete</Button> */}
           </Card>
         ))
       )}
