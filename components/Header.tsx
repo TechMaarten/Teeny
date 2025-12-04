@@ -1,13 +1,10 @@
-// reused header component
-
-// front end people: change coloring
-export default function Header(){
-    return(
-        <header className="bg-[#450920] text-[#f6cacd] flex justify-between items-center h-20 px-6 font-sans">
-            <h2 className="text-4xl font-semibold p-4">
-                Budget Buddy
-            </h2>
-            {/* add nav */}
-        </header>
-    );
+export default function Header() {
+  return (
+    <header className="bg-[#1F2937] text-white flex justify-between items-center h-20 px-8 shadow-md">
+      <h2 className="text-3xl font-bold tracking-wide">
+        Budget Buddy
+      </h2>
+      {/* Add nav or links later */}
+    </header>
+  );
 }
