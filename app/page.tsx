@@ -1,65 +1,83 @@
-import Image from "next/image";
+// app/page.tsx
+"use client";
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+import styled from "styled-components";
+
+
+const MainContainer = styled.main`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px; 
+    background-color: #f8fafc; 
+`;
+
+const ContentCard = styled.div`
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    padding: 40px; 
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+`;
+
+const Heading = styled.h1`
+    font-size: 40px; 
+    font-weight: 800;
+    color: #4f46e5; 
+    margin-bottom: 16px; 
+`;
+
+const Subtitle = styled.p`
+    font-size: 18px;
+    color: #475569; 
+    margin-bottom: 32px;
+`;
+
+const CallToActionLink = styled.a`
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 18px; 
+    font-weight: 600;
+    color: white;
+    background-color: #10b981; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+`;
+
+const SecondaryText = styled.p`
+    font-size: 14px; 
+    color: #64748b;
+    margin-top: 16px; 
+`;
+
+
+export default function HomePage() {
+    return (
+        <MainContainer>
+            <ContentCard>
+                <Heading>
+                     BudgetBuddy
+                </Heading>
+
+                <Subtitle>
+                    Your simple and reliable tool for tracking income and expenses.
+                </Subtitle>
+
+                <div>
+                    <CallToActionLink href="/transactions">
+                        View My Transactions
+                    </CallToActionLink>
+
+                    <SecondaryText>
+                        Click above to manage your finances.
+                    </SecondaryText>
+                </div>
+            </ContentCard>
+        </MainContainer>
+    );
 }
