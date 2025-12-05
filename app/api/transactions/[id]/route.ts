@@ -4,13 +4,55 @@ import { ObjectId } from "mongodb";
 import getCollection, { TRANSACTIONS_COLLECTION } from "@/db";
 import type { Transaction } from "@/types/Transaction";
 
+// API route handler for GET requests (fetch a single transaction by id)
+export async function GET(
+  _request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const { id } = await params; 
+
+    // validate id format
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json(
+        { error: "Invalid transaction id" },
+        { status: 400 },
+      );
+    }
+
+    // connect to db and find the document
+    const collection = await getCollection(TRANSACTIONS_COLLECTION);
+    const doc = await collection.findOne({ _id: new ObjectId(id) });
+
+    if (!doc) {
+      return NextResponse.json(
+        { error: "Transaction not found" },
+        { status: 404 },
+      );
+    }
+
+    const { _id, ...rest } = doc;
+    return NextResponse.json(
+      { id: _id.toString(), ...rest },
+      { status: 200 },
+    );
+
+  } catch (err) {
+    console.error("GET by id error:", err);
+    return NextResponse.json(
+      { error: "Failed to GET transaction" },
+      { status: 500 },
+    );
+  }
+}
+
 // API route handler for PUT requests (update a single transaction)
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> }, 
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     // validate id
     if (!ObjectId.isValid(id)) {
@@ -100,10 +142,10 @@ export async function PUT(
 // API route handler for DELETE requests (delete a single transaction)
 export async function DELETE(
   _request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     // validate id
     if (!ObjectId.isValid(id)) {
