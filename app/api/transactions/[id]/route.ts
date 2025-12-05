@@ -7,10 +7,10 @@ import type { Transaction } from "@/types/Transaction";
 // API route handler for PUT requests (update a single transaction)
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> }, 
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     // validate id
     if (!ObjectId.isValid(id)) {
@@ -100,10 +100,10 @@ export async function PUT(
 // API route handler for DELETE requests (delete a single transaction)
 export async function DELETE(
   _request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     // validate id
     if (!ObjectId.isValid(id)) {
