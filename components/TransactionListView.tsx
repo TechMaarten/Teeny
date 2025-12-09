@@ -1,4 +1,4 @@
-//developer: Maarten Lopes
+//developer: Maarten Lopes and Nathan Moges
 //TransactionListView component – displays all transactions in read-only mode
 "use client";
 
@@ -36,8 +36,6 @@ const Card = styled.div<{ $type: "income" | "expense" }>`
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease;
-
-    // Added flex properties to align details and buttons
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,7 +45,8 @@ const Card = styled.div<{ $type: "income" | "expense" }>`
     }
 `;
 
-// Nathan
+// Nathan: takes up the available 
+//space of every transaction detail when using flex-grow
 const TransactionDetails = styled.div`
     flex-grow: 1;
 `;
@@ -77,39 +76,25 @@ const ErrorMsg = styled.p`
     font-size: 1rem;
 `;
 
-// Nathan
+// Nathan 
 const EditButton = styled.button`
-    background-color: #3b82f6; /* Blue color */
+    background-color: #3b82f6; 
     color: white;
-    border: none;
     padding: 8px 15px;
     border-radius: 8px;
-    cursor: pointer;
     font-weight: 600;
-    transition: background-color 0.2s;
-    flex-shrink: 0;
-    margin-right: 8px; /* Space between Edit and Delete */
+    margin-right: 8px; 
 
-    &:hover {
-        background-color: #2563eb;
-    }
 `;
 
 // Nathan
 const DeleteButton = styled.button`
     background-color: #ef4444; /* Red color */
     color: white;
-    border: none;
     padding: 8px 15px;
     border-radius: 8px;
-    cursor: pointer;
     font-weight: 600;
-    transition: background-color 0.2s;
-    flex-shrink: 0; /* Prevents button from shrinking */
 
-    &:hover {
-        background-color: #dc2626;
-    }
 `;
 
 
@@ -117,7 +102,7 @@ export default function TransactionListView() {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [error, setError] = useState<string | null>(null);
     // Nathan for update
-    const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
+    const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null); //Tracks if a transaction is being edited
 
     //Load transactions on component mount
     useEffect(() => {
@@ -140,31 +125,31 @@ export default function TransactionListView() {
     }
 
     // Nathan for delete
-
     async function handleDeleteTransaction(id: string) {
+
+        //Gives a warning to the user before deleting just to confirm
         if (!window.confirm("Are you sure you want to delete this transaction?")) {
             return;
         }
-
+        //Calls our DELETE method to delete the transaction with the ID we give it
         try {
             setError(null);
             const res = await fetch(`/api/transactions/${id}`, {
                 method: "DELETE",
             });
-
+            //Error checking
             if (!res.ok) {
                 const data = await res.json().catch(() => ({}));
-                throw new Error(data.error || "Failed to delete transaction");
+                throw new Error("Failed to delete transaction");
             }
-
-            // SUCCESS: Optimistically update the UI by removing the item from state
+            //Removes the deleted transaction and uses filter to create a new array without the ID we just deleted
             setTransactions((prevTransactions) =>
                 prevTransactions.filter((t) => t.id !== id)
             );
-
+        //After getting that array we call fetchTransactions to resync with the server to show that the transaction is deleted
         } catch (err: any) {
             console.error(err);
-            setError(err.message || "Deletion failed due to unknown error.");
+            setError("Deletion failed due to unknown error.");
             fetchTransactions();
         }
     }
@@ -178,14 +163,14 @@ export default function TransactionListView() {
             {/* Nathan for update and delete */}
             {editingTransaction && (
                 <UpdateTransactionForm
-                    // Pass the ID of the transaction being edited
+                    // Passes the ID value of whats going to be edited
                     transactionId={editingTransaction.id}
-                    // onSuccess: Callback to refresh the list and close the form
+                    // use onSuccess to refresh the list
                     onSuccess={() => {
                         setEditingTransaction(null); // Close the form
                         fetchTransactions(); // Refresh the list
                     }}
-                    // onCancel: Callback to just close the form
+                    // Call onCancel if we want to close the form
                     onCancel={() => setEditingTransaction(null)}
                 />
             )}

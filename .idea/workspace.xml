@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b969e12-d277-405b-b771-db8e52e4c911" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/api/transactions/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/transactions/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TransactionListView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TransactionListView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1764811046499</updated>
       <workItem from="1764811047653" duration="27494000" />
-      <workItem from="1764912815875" duration="3006000" />
+      <workItem from="1764912815875" duration="4558000" />
     </task>
     <servers />
   </component>
