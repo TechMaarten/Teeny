@@ -89,7 +89,7 @@ const EditButton = styled.button`
 
 // Nathan
 const DeleteButton = styled.button`
-    background-color: #ef4444; /* Red color */
+    background-color: #ef4444; 
     color: white;
     padding: 8px 15px;
     border-radius: 8px;
@@ -124,14 +124,14 @@ export default function TransactionListView() {
         }
     }
 
-    // Nathan for delete
+    // Nathan for handleDeleteTransaction
     async function handleDeleteTransaction(id: string) {
 
         //Gives a warning to the user before deleting just to confirm
         if (!window.confirm("Are you sure you want to delete this transaction?")) {
             return;
         }
-        //Calls our DELETE method to delete the transaction with the ID we give it
+        //Does a DELETE method to delete the transaction with the ID we give it
         try {
             setError(null);
             const res = await fetch(`/api/transactions/${id}`, {
