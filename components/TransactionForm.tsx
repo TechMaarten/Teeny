@@ -8,24 +8,24 @@ import styled from "styled-components";
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
+  gap: 16px;
+  padding: 32px;
   max-width: 480px;
-  margin: 2rem auto;
-  background: rgba(255, 255, 255, 0.7); /* subtle transparency */
+  margin: 32px auto;
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
-  border-radius: 1rem;
+  border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 `;
 
 const Label = styled.label`
   font-weight: 600;
   color: #1e293b;
-  
 `;
 
 const Input = styled.input`
   padding: 10px;
+  margin-left: 10px;   
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   background-color: #f8fafc;
@@ -39,6 +39,7 @@ const Input = styled.input`
 
 const Select = styled.select`
   padding: 10px;
+  margin-left: 10px;   
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   background-color: #f8fafc;
@@ -53,12 +54,12 @@ const Select = styled.select`
 const Button = styled.button`
   background-color: #3b82f6;
   color: white;
-  padding: 0.75rem;
+  padding: 12px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 16px;
   transition: background-color 0.3s ease;
 
   &:hover {
@@ -68,13 +69,14 @@ const Button = styled.button`
 
 const ErrorMsg = styled.p`
   color: #dc2626;
-  font-size: 0.875rem;
+  font-size: 14px;
 `;
 
 const SuccessMsg = styled.p`
   color: #16a34a;
-  font-size: 0.875rem;
+  font-size: 14px;
 `;
+
 
 export default function TransactionForm() {
   //form state
