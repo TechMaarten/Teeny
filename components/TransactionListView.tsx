@@ -4,11 +4,10 @@
 
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import UpdateTransactionForm from "./UpdateTransactionForm"; // <-- IMPORT THE FORM
+import UpdateTransactionForm from "./UpdateTransactionForm";
 
 // --- Transaction Data Type ---
 type Transaction = {
-    // Keeping 'id' here to match the type defined in your original code
     id: string;
     type: "income" | "expense";
     amount: number;
@@ -20,20 +19,20 @@ type Transaction = {
 // --- Styled components ---
 const ListWrapper = styled.div`
     max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.65); /* frosted glass look */
+    margin: 32px auto;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(10px);
-    border-radius: 1rem;
+    border-radius: 16px;
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
 `;
 
 const Card = styled.div<{ $type: "income" | "expense" }>`
     background: #f8fafc;
     border-left: 5px solid ${(props) => (props.$type === "income" ? "#22c55e" : "#ef4444")};
-    padding: 1rem 1.5rem;
+    padding: 16px 24px;
     border-radius: 12px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease;
     display: flex;
@@ -45,8 +44,6 @@ const Card = styled.div<{ $type: "income" | "expense" }>`
     }
 `;
 
-// Nathan: takes up the available 
-//space of every transaction detail when using flex-grow
 const TransactionDetails = styled.div`
     flex-grow: 1;
 `;
@@ -54,48 +51,45 @@ const TransactionDetails = styled.div`
 const Title = styled.h3`
     margin: 0;
     color: #0f172a;
-    font-size: 1.25rem;
+    font-size: 20px;
 `;
 
 const Note = styled.p`
     font-style: italic;
     color: #475569;
-    margin: 0.25rem 0;
+    margin: 4px 0;
 `;
 
 const DateText = styled.p`
-    font-size: 0.875rem;
+    font-size: 14px;
     color: #64748b;
-    margin-top: 0.5rem;
+    margin-top: 8px;
 `;
 
 const ErrorMsg = styled.p`
     color: #dc2626;
     text-align: center;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 16px;
 `;
 
-// Nathan 
 const EditButton = styled.button`
-    background-color: #3b82f6; 
+    background-color: #3b82f6;
     color: white;
     padding: 8px 15px;
     border-radius: 8px;
     font-weight: 600;
-    margin-right: 8px; 
-
+    margin-right: 8px;
 `;
 
-// Nathan
 const DeleteButton = styled.button`
-    background-color: #ef4444; 
+    background-color: #ef4444;
     color: white;
     padding: 8px 15px;
     border-radius: 8px;
     font-weight: 600;
-
 `;
+
 
 
 export default function TransactionListView() {
